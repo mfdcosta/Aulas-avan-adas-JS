@@ -96,11 +96,11 @@ for (let i = 1; i <= 20; i++) {
 }
 //Números um ao lado do outro.
 for (let i = 1; i <= 20; i++) {
-  document.writeln(i + " "); // Adiciona um espaço após cada número
+  document.writeln(i + " "); 
 }
 
 8.Faça um programa que leia 5 números e informe o maior número.
-let maiorNumero = 0; // Inicia c/ o maior número 0.
+let maiorNumero = 0; 
 
 for (let i = 1; i <= 5; i++) {
   let numero = parseInt(prompt("Digite o número " + i + ":")); 
