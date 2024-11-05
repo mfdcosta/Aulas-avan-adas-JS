@@ -191,3 +191,23 @@ for (let i = 1; i <= expoente; i++) {
   resultado *= base;
 }
 document.write(base + " elevado a " + expoente + " é: " + resultado + "<br>");
+
+//15. Faça um programa que peça 10 números inteiros, calcule e mostre a quantidade de números
+//pares e a quantidade de números ímpares.
+
+
+let contadorPar = 0;  
+let contadorImpar = 0;  
+
+for (let i = 1; i <= 10; i++) {
+    let numero = parseInt(prompt("Digite o " + i + "º número inteiro: "));
+
+    if (numero % 2 == 0) {
+        contadorPar++;  
+    } else {
+        contadorImpar++
+    }
+}
+
+document.write("Quantidade de números pares: " + contadorPar + " <br>");
+document.write("Quantidade de números ímpares: " + contadorImpar);
