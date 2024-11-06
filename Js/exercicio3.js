@@ -211,3 +211,158 @@ for (let i = 1; i <= 10; i++) {
 
 document.write("Quantidade de números pares: " + contadorPar + " <br>");
 document.write("Quantidade de números ímpares: " + contadorImpar);
+
+
+// 16. Gere a sequência de Fibonacci até o n-ésimo termo.
+// let n = 10; 
+// let fibonacci = [0, 1];
+
+// for (let i = 2; i < n; i++) {
+//   fibonacci.push(fibonacci[i - 1] + fibonacci[i - 2]);
+// }
+
+// console.log("Sequência de Fibonacci:", fibonacci.join(", "));
+// document.write("Sequência de Fibonacci:", fibonacci.join(", "));
+
+// 17. Gere a sequência de Fibonacci até que o valor seja maior que 500.
+// 18. Calcule o fatorial de um número inteiro fornecido pelo usuário. Ex.: 5! = 5 × 4 × 3 × 2 × 1 = 120.
+// let numero = parseInt(prompt("Digite um número: "));
+// let fatorial = 1;
+
+// if (numero < 0) {
+//     console.log("Fatorial não existe para números negativos.");
+//     document.write("Fatorial não existe para números negativos.");
+// } else if (numero === 0 || numero === 1) {
+//     console.log(`O fatorial de ${numero} é 1.`);
+//     document.write(`O fatorial de ${numero} é 1.`);
+// } else {
+//     for (let i = numero; i > 1; i--) {
+//         fatorial *= i;
+//     }
+//     console.log(`O fatorial de ${numero} é ${fatorial}.`);
+//     document.write(`O fatorial de ${numero} é ${fatorial}.`);
+// }
+
+
+// 19. Determine o menor, o maior e a soma dos valores de um conjunto de N números fornecidos.
+// let numeros = [4, 8, 13, 27, 39];  
+
+// let menor = numeros[0];  // Inicializando com o primeiro valor do array
+// let maior = numeros[0];  // Inicializando com o primeiro valor do array
+// let soma = 0;
+
+// for (let i = 0; i < numeros.length; i++) {
+//     if (numeros[i] < menor) {
+//         menor = numeros[i];  
+//     }
+//     if (numeros[i] > maior) {
+//         maior = numeros[i];  
+//     }
+//     soma += numeros[i];  // 
+// }
+// document.write("Menor valor: " + menor + "<br>");
+// document.write("Maior valor: " + maior + "<br>");
+// document.write("Soma dos valores: " + soma + "<br>");
+
+// console.log("Menor valor:", menor);
+// console.log("Maior valor:", maior);
+// console.log("Soma dos valores:", soma);
+
+// 20. Altere o programa anterior para aceitar apenas números entre 0 e 1000.
+// 21. Permita ao usuário calcular o fatorial várias vezes e limite o fatorial a números inteiros positivos menores que 16.
+// 22. Determine se um número inteiro é primo.
+// let numero = parseInt(prompt("Digite um número: ")); 
+// let isPrimo = true;  // Assume que o número é primo inicialmente
+
+// if (numero < 2) {
+//     isPrimo = false;
+// } else {
+//     // Laço para verificar se o número é divisível por algum número entre 2 e o número - 1
+//     for (let i = 2; i <= Math.sqrt(numero); i++) {
+//         if (numero % i === 0) {  // Se for divisível, não é primo
+//             isPrimo = false;
+//             break;
+//         }
+//     }
+// }
+
+// if (isPrimo) {
+//     document.write(numero + " é um número primo.");
+// } else {
+//     document.write(numero + " não é um número primo.");
+// }
+
+// 23. Modifique o programa para indicar, caso o número não seja primo, por quais números ele é divisível.
+
+// 24. Exiba todos os números primos entre 1 e N.
+// let N = 50;  // Defina o valor de N
+
+// for (let i = 2; i <= N; i++) {
+//     let isPrime = true;
+
+//     for (let j = 2; j <= Math.sqrt(i); j++) {
+//         if (i % j === 0) {
+//             isPrime = false;
+//             break;  
+//         }
+//     }
+//     if (isPrime) {
+//         console.log(i);
+//     }
+// }
+
+// 25. Calcule a média aritmética de N notas fornecidas.
+// let notas = [8.5, 8, 7, 6, 10]; 
+// let soma = 0;
+
+// for (let i = 0; i < notas.length; i++) {
+//     soma += notas[i]; 
+// }
+// let media = soma / notas.length;  
+
+// document.write("A média aritmética é: " + media);
+// console.log("A média aritmética é:", media);
+
+
+// 26. Solicite a idade de N pessoas e determine se a média indica uma turma jovem (0-25), adulta (26-60)
+// ou idosa (acima de 60).
+let numero = parseInt(prompt("Digite um número: "));  
+let isPrimo = true; 
+let divisores = [];  
+// Verificar se número é menor que 2 (não é primo)
+if (numero < 2) {
+    isPrimo = false;
+} else {
+  for (let i = 2; i <= Math.sqrt(numero); i++) {
+        if (numero % i === 0) {  // Se for divisível, não é primo
+            isPrimo = false;
+            divisores.push(i);  // Adiciona o divisor ao array
+            if (i !== numero / i) {  // Evita adicionar o mesmo divisor duas vezes
+                divisores.push(numero / i);  // Adiciona também o divisor complementar
+            }
+        }
+    }
+}
+
+// Exibe o resultado
+if (isPrimo) {
+    document.write(numero + " é um número primo.");
+    console.log(numero + " é um número primo.");
+} else {
+    document.write(numero + " não é um número primo. Ele é divisível por: " + divisores.join(", "));
+}
+
+// 27. Simule uma eleição com três candidatos e exiba o número de votos de cada um ao final.
+// 28. Calcule o número médio de alunos por turma, considerando que cada turma tem no máximo 40 alunos.
+// 29. Calcule o valor total investido por um colecionador em CDs e o valor médio gasto em cada um.
+// 30. Monte uma tabela de preços de 1 a 50 itens, onde cada item custa R$ 1,99, para uma loja de R$ 1,99.
+// 31. Monte uma tabela de preços de pães para uma padaria, onde o preço do pão é informado pelo usuário.
+// 32. Implemente uma caixa registradora rudimentar para uma loja de conveniência.
+// 33. Informe a menor, a maior e a média das temperaturas de um conjunto indeterminado de valores.
+// 34. Verifique se um número é primo (com foco em criptografia).
+// 35. Gere uma lista dos números primos entre 1 e um número fornecido pelo usuário.
+// 36. Gere a tabuada de um número qualquer, com intervalos informados pelo usuário.
+// 37. Calcule o mais alto, o mais baixo, o mais gordo e o mais magro cliente de uma academia e informe as médias de altura e peso.
+// 38. Calcule o salário atual de um funcionário contratado em 1995 com aumento anual variável, baseado em seu salário inicial.
+// 39. Realize uma estatística de acidentes de trânsito em cinco cidades e analise os resultados.
+// 40. Exiba uma tabela de uma dívida com base em juros e número de parcelas.
