@@ -131,7 +131,7 @@ for (let i = 1; i <= 50; i++) {
 }
 
 11.Faça um programa que receba dois números inteiros e gere os números inteiros que estão no intervalo 
-//compreendido por eles.
+compreendido por eles.
 
 let num1 = parseInt(prompt("Digite o primeiro número:"));
 let num2 = parseInt(prompt("Digite o segundo número:"));
@@ -148,7 +148,7 @@ if (num1 < num2) {
   }
 }
 
-//12. Altere o programa anterior para mostrar no final a soma dos números.
+12. Altere o programa anterior para mostrar no final a soma dos números.
 
 let num1 = parseInt(prompt("Digite o primeiro número:"));
 let num2 = parseInt(prompt("Digite o segundo número:"));
@@ -169,7 +169,7 @@ if (num1 < num2) {
 document.write("A soma dos números no intervalo é: " + soma + "<br>");
 
 
-//13.Desenvolva um gerador de tabuada, capaz de gerar a tabuada de qualquer número inteiro entre 1 e 10. 
+13.Desenvolva um gerador de tabuada, capaz de gerar a tabuada de qualquer número inteiro entre 1 e 10. 
 
 let numero = parseInt(prompt("Digite um número entre 1 e 10 para verificarmos a tabuada:"));
 
@@ -300,6 +300,21 @@ if (menor !== null) {
 
 21. Permita ao usuário calcular o fatorial várias vezes e limite o fatorial a números inteiros positivos menores 
 que 16.
+let repetir;
+do {
+  let numero = parseInt(prompt("Digite um número inteiro positivo menor que 16 para calcular o fatorial:"));
+if (numero >= 0 && numero < 16) {
+  let fatorial = 1;
+  for (let i = 1; i <= numero; i++) {
+            fatorial *= i;
+        }
+        document.write("O fatorial de " + numero + " é: " + fatorial + "<br>");
+    } else {
+        document.write("Número inválido! Por favor, digite um número entre 0 e 15.");
+    }
+continuar = prompt("Deseja calcular o fatorial de outro número? (s/n)").toLowerCase();
+} while (continuar === 's');
+document.write("Programa encerrado.");
 
 22. Determine se um número inteiro é primo.
 
@@ -324,15 +339,34 @@ if (isPrimo) {
     document.write(numero + " não é um número primo.");
 }
 
-
 23. Modifique o programa para indicar, caso o número não seja primo, por quais números ele é divisível.
+  
+  let numero = parseInt(prompt("Digite um número inteiro para verificar se é primo:"));
+let ehPrimo = true; // Assume que o número é primo inicialmente
+let divisores = []; // Array para armazenar os divisores
+
+if (numero <= 1) {
+    ehPrimo = false;
+}
+for (let i = 2; i <= Math.sqrt(numero); i++) {
+    if (numero % i === 0) {
+        ehPrimo = false;
+        divisores.push(i); 
+        divisores.push(numero / i);
+    }
+}
+divisores = [...new Set(divisores)];
+
+if (ehPrimo) {
+   document.write("O número " + numero + " é primo." + "<br>");
+} else {
+    document.write("O número " + numero + " não é primo." + "<br>");
+    document.write("Ele é divisível por: " + divisores.join(", "));
+}
 
 24. Exiba todos os números primos entre 1 e N.
 
-let N = 50;  
-//Aparecer 1 vez apenas o texto "Os números primos são:" é necessário colocá-lo fora do loop principal e 
-//exibir apenas os números primos em cada linha.
-
+let N = 50;
 document.write("Os números primos são:<br>"); 
 console.log("Os números primos são:");
 
@@ -474,6 +508,25 @@ for (let i = 1; i <= 50; i++) {
 34. Verifique se um número é primo (com foco em criptografia).
 
 35. Gere uma lista dos números primos entre 1 e um número fornecido pelo usuário.
+  
+const number = parseInt(prompt("Digite um número: "));
+let primes = [];
+
+for (let i = 2; i <= number; i++) {
+  let isPrime = true; 
+
+  for (let j = 2; j <= Math.sqrt(i); j++) {
+    if (i % j === 0) {
+      isPrime = false; 
+      break; 
+    }
+  }
+
+  if (isPrime) {
+    primes.push(i);
+  }
+}
+document.write(`Números primos até ${number}: `, primes + "<br>");
 
 36. Gere a tabuada de um número qualquer, com intervalos informados pelo usuário.
 
@@ -489,6 +542,50 @@ for (let i = intervaloInicio; i <= intervaloFim; i++) {
 
 37. Calcule o mais alto, o mais baixo, o mais gordo e o mais magro cliente de uma academia e informe as médias de 
 altura e peso.
+  
+let numClientes = parseInt(prompt("Quantos clientes deseja  registrar? "));
+
+let maisAlto = -Infinity;
+let maisBaixo = Infinity;
+let maisGordo = -Infinity;
+let maisMagro = Infinity;
+let totalAltura = 0;
+let totalPeso = 0;
+
+for (let i = 1; i <= numClientes; i++) {
+    let altura = parseFloat(prompt("Digite a altura do cliente " + i + " (em metros):"));
+    let peso = parseFloat(prompt("Digite o peso do cliente " + i + " (em kg):"));
+
+    totalAltura += altura;
+    totalPeso += peso;
+
+    if (altura > maisAlto) {
+        maisAlto = altura;
+    }
+  
+    if (altura < maisBaixo) {
+        maisBaixo = altura;
+    }
+
+    if (peso > maisGordo) {
+        maisGordo = peso;
+    }
+
+    if (peso < maisMagro) {
+        maisMagro = peso;
+    }
+}
+// Calculando as médias
+let mediaAltura = totalAltura / numClientes;
+let mediaPeso = totalPeso / numClientes;
+
+// Exibindo os resultados
+document.write("O cliente mais alto tem " + maisAlto + " metros.<br>");
+document.write("O cliente mais baixo tem " + maisBaixo + " metros.<br>");
+document.write("O cliente mais gordo pesa " + maisGordo + " kg.<br>");
+document.write("O cliente mais magro pesa " + maisMagro + " kg.<br>");
+document.write("A média de altura dos clientes é " + mediaAltura.toFixed(2) + " metros.<br>");
+document.write("A média de peso dos clientes é " + mediaPeso.toFixed(2) + " kg.<br>");
 
 38. Calcule o salário atual de um funcionário contratado em 1995 com aumento anual variável, baseado em seu
 salário inicial.
