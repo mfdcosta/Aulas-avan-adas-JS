@@ -502,10 +502,77 @@ for (let i = 1; i <= 50; i++) {
 }
 
 32. Implemente uma caixa registradora rudimentar para uma loja de conveniência.
+let total = 0;
+
+while (true) {
+    let preco = prompt("Digite o preço do item (ou 'sair' para finalizar):");
+    if (preco.toLowerCase() === "sair") {
+        break;
+    }
+    preco = parseFloat(preco);
+    if (!isNaN(preco) && preco > 0) {
+        total += preco;
+    } else {
+        alert("Digite um valor válido.");
+    }
+}
+
+document.write("Total a pagar: R$ " + total.toFixed(2));
+console.log("Total a pagar: R$ " + total.toFixed(2));
 
 33. Informe a menor, a maior e a média das temperaturas de um conjunto indeterminado de valores.
+  
+let temperaturas = [];
+let entrada;
+
+while (true) {
+    entrada = prompt("Digite uma temperatura (ou 'sair' para finalizar):");
+    if (entrada.toLowerCase() === "sair") {
+        break;
+    }
+    let temp = parseFloat(entrada);
+    if (!isNaN(temp)) {
+        temperaturas.push(temp);
+    } else {
+        alert("Digite um valor válido.");
+    }
+}
+
+if (temperaturas.length > 0) {
+    let menor = Math.min(...temperaturas);
+    let maior = Math.max(...temperaturas);
+    let media = temperaturas.reduce((a, b) => a + b, 0) / temperaturas.length;
+
+    document.write("Menor: " + menor + "°<br>");
+    document.write("Maior: " + maior + "°<br>");
+    document.write("Média: " + media.toFixed(2) + "°<br>");
+    console.log("Menor:", menor, "° | Maior:", maior, "° | Média:", media.toFixed(2), "°");
+} else {
+    document.write("Nenhuma temperatura registrada.");
+}
 
 34. Verifique se um número é primo (com foco em criptografia).
+let numero = parseInt(prompt("Digite um número inteiro:"));
+
+if (numero < 2) {
+    document.write(numero + " não é um número primo.");
+} else {
+    let isPrimo = true;
+
+    for (let i = 2; i <= Math.sqrt(numero); i++) {
+        if (numero % i === 0) {
+            isPrimo = false;
+            break;
+        }
+    }
+
+    if (isPrimo) {
+        document.write(numero + " é um número primo (adequado para criptografia).");
+    } else {
+        document.write(numero + " não é um número primo.");
+    }
+}
+
 
 35. Gere uma lista dos números primos entre 1 e um número fornecido pelo usuário.
   
@@ -606,5 +673,38 @@ for (let aumento of aumentosAnuais) {
 document.write("O salário atual do funcionário é R$ " + salarioAtual.toFixed(2));
 
 39. Realize uma estatística de acidentes de trânsito em cinco cidades e analise os resultados.
+let cidades = [];
+let totalVeiculos = 0;
+let totalAcidentes = 0;
+let cidadeMaisAcidentes, cidadeMenosAcidentes;
+
+for (let i = 1; i <= 5; i++) {
+    let nome = prompt("Digite o nome da cidade " + i + ":");
+    let veiculos = parseInt(prompt("Digite o número de veículos de passeio na cidade " + nome + ":"));
+    let acidentes = parseInt(prompt("Digite o número de acidentes de trânsito na cidade " + nome + ":"));
+
+    cidades.push({ nome, veiculos, acidentes });
+
+    totalVeiculos += veiculos;
+    totalAcidentes += acidentes;
+
+    if (!cidadeMaisAcidentes || acidentes > cidadeMaisAcidentes.acidentes) {
+        cidadeMaisAcidentes = { nome, acidentes };
+    }
+
+    if (!cidadeMenosAcidentes || acidentes < cidadeMenosAcidentes.acidentes) {
+        cidadeMenosAcidentes = { nome, acidentes };
+    }
+}
+
+let mediaVeiculos = totalVeiculos / 5;
+let mediaAcidentes = totalAcidentes / 5;
+
+document.write("<h3>Estatística de Acidentes</h3>");
+document.write("Cidade com mais acidentes: " + cidadeMaisAcidentes.nome + " (" + cidadeMaisAcidentes.acidentes + " acidentes)<br>");
+document.write("Cidade com menos acidentes: " + cidadeMenosAcidentes.nome + " (" + cidadeMenosAcidentes.acidentes + " acidentes)<br>");
+document.write("Média de veículos de passeio: " + mediaVeiculos.toFixed(2) + "<br>");
+document.write("Média de acidentes: " + mediaAcidentes.toFixed(2) + "<br>");
+
 
 40. Exiba uma tabela de uma dívida com base em juros e número de parcelas.
